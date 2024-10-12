@@ -60,6 +60,7 @@ std::unique_ptr<Context> Context::createGlobalContext() {
     ctx->addFunction(std::make_unique<PSC::BuiltinFnLength>());
     ctx->addFunction(std::make_unique<PSC::BuiltinFnRight>());
     ctx->addFunction(std::make_unique<PSC::BuiltinFnMid>());
+    ctx->addFunction(std::make_unique<PSC::BuiltinFnSubstring>());
     ctx->addFunction(std::make_unique<PSC::BuiltinFnLeft>());
     ctx->addFunction(std::make_unique<PSC::BuiltinFnToUpper>());
     ctx->addFunction(std::make_unique<PSC::BuiltinFnToLower>());
@@ -88,6 +89,7 @@ std::unique_ptr<Context> Context::createGlobalContext() {
 
     ctx->addFunction(std::make_unique<PSC::BuiltinFnRand>());
     ctx->addFunction(std::make_unique<PSC::BuiltinFnInt>());
+    ctx->addFunction(std::make_unique<PSC::BuiltinFnRound>());
 
     ctx->addFunction(std::make_unique<PSC::BuiltinFnPow>());
     ctx->addFunction(std::make_unique<PSC::BuiltinFnExp>());

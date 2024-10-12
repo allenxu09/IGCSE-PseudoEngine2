@@ -46,7 +46,7 @@ int main(int argc, char **argv) {
     }
 
 #ifdef READLINE
-    rl_bind_key('\t', rl_tab_insert);
+    rl_bind_key('\t', rl_insert);
 #endif
 
     srand((unsigned int) time(NULL));

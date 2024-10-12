@@ -34,6 +34,11 @@ namespace PSC {
         SyntaxError(const Token &token, const std::string &info = "");
     };
 
+    // class ExpressionBannedError: public SyntaxError {
+    // public:
+    //     ExpressionBannedError(const Token &token);
+    // };
+
 
     class LexerError : public SyntaxError {
     private:
@@ -66,7 +71,6 @@ namespace PSC {
         const Context &context;
 
         RuntimeError(const Token &token, const Context &context, const std::string &info = "");
-
         std::string toStr() const override;
     };
 

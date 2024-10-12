@@ -47,6 +47,9 @@ inline std::string invalidCharMsg(char c) {
     s += '\'';
     return s;
 }
+// ExpressionBannedError::ExpressionBannedError(const Token &token)
+//     : SyntaxError(token, "Expression not allowed here")
+// {}
 
 InvalidCharError::InvalidCharError(int line, int column, char c)
     : LexerError(line, column, invalidCharMsg(c))
@@ -81,6 +84,8 @@ RuntimeError::RuntimeError(const Token &token, const Context &context, const std
 
     rtInfo = os.str();
 }
+
+
 
 std::string RuntimeError::toStr() const {
     return rtInfo;

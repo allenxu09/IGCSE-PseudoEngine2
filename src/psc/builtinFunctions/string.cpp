@@ -58,6 +58,46 @@ void PSC::BuiltinFnRight::run(PSC::Context &ctx) {
     ctx.returnValue = std::make_unique<NodeResult>(std::move(ret), PSC::DataType::STRING);
 }
 
+PSC::BuiltinFnSubstring::BuiltinFnSubstring()
+    : Function("SUBSTRING", PSC::DataType::STRING)
+{
+    parameters.reserve(3);
+    parameters.emplace_back("String", PSC::DataType::STRING, false);
+    parameters.emplace_back("x", PSC::DataType::INTEGER, false);
+    parameters.emplace_back("y", PSC::DataType::INTEGER, false);
+}
+
+void PSC::BuiltinFnSubstring::run(PSC::Context &ctx) {
+    PSC::Variable *str = ctx.getVariable("String");
+    if (str == nullptr || str->type != PSC::DataType::STRING) std::abort();
+
+    PSC::Variable *x = ctx.getVariable("x");
+    if (x == nullptr || x->type != PSC::DataType::INTEGER) std::abort();
+
+    PSC::Variable *y = ctx.getVariable("y");
+    if (y == nullptr || y->type != PSC::DataType::INTEGER) std::abort();
+
+
+    auto ret = std::make_unique<PSC::String>();
+    std::string &strVal = str->get<PSC::String>().value;
+    size_t strLen = strVal.size();
+
+    int_t xVal = x->get<PSC::Integer>().value - 1;
+    if (xVal < 0)
+        throw PSC::RuntimeError(PSC::errToken, ctx, "Index for 'SUBSTRING' function cannot be less than 1");
+    if (static_cast<size_t>(xVal) >= strLen)
+        throw PSC::RuntimeError(PSC::errToken, ctx, "Index for 'SUBSTRING' function cannot exceed string length");
+
+    int_t yVal = y->get<PSC::Integer>().value;
+    if (yVal < 0)
+        throw PSC::RuntimeError(PSC::errToken, ctx, "Length for 'SUBSTRING' function cannot be negative");
+    if (static_cast<size_t>(yVal + xVal) > strLen)
+        throw PSC::RuntimeError(PSC::errToken, ctx, "Substring length in 'SUBSTRING' function cannot exceed string length");
+
+    ret->value = strVal.substr(xVal, yVal);
+
+    ctx.returnValue = std::make_unique<NodeResult>(std::move(ret), PSC::DataType::STRING);
+}
 
 PSC::BuiltinFnMid::BuiltinFnMid()
     : Function("MID", PSC::DataType::STRING)

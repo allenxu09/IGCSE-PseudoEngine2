@@ -46,3 +46,17 @@ void PSC::BuiltinFnInt::run(PSC::Context &ctx) {
 
     ctx.returnValue = std::make_unique<NodeResult>(std::move(ret), PSC::DataType::INTEGER);
 }
+PSC::BuiltinFnRound::BuiltinFnRound()
+    : Function("ROUND", PSC::DataType::INTEGER)
+{
+    parameters.emplace_back("x", PSC::DataType::REAL, false);
+}
+
+void PSC::BuiltinFnRound::run(PSC::Context &ctx) {
+    PSC::Variable *x = ctx.getVariable("x");
+    if (x == nullptr || x->type != PSC::DataType::REAL) std::abort();
+
+    auto ret = std::make_unique<PSC::Integer>((int_t) floor(x->get<PSC::Real>().value));
+
+    ctx.returnValue = std::make_unique<NodeResult>(std::move(ret), PSC::DataType::INTEGER);
+}

@@ -132,25 +132,27 @@ void Lexer::makeWord() {
         tokens.emplace_back(new Token(TokenType::INPUT, line, startColumn));
     }
 
-    else if (word == "OPENFILE") {
-        tokens.emplace_back(new Token(TokenType::OPENFILE, line, startColumn));
-    } else if (word == "READFILE") {
-        tokens.emplace_back(new Token(TokenType::READFILE, line, startColumn));
-    } else if (word == "WRITEFILE") {
-        tokens.emplace_back(new Token(TokenType::WRITEFILE, line, startColumn));
-    } else if (word == "CLOSEFILE") {
-        tokens.emplace_back(new Token(TokenType::CLOSEFILE, line, startColumn));
-    }
+    // else if (word == "OPENFILE") {
+    //     tokens.emplace_back(new Token(TokenType::OPENFILE, line, startColumn));
+    // } else if (word == "READFILE") {
+    //     tokens.emplace_back(new Token(TokenType::READFILE, line, startColumn));
+    // } else if (word == "WRITEFILE") {
+    //     tokens.emplace_back(new Token(TokenType::WRITEFILE, line, startColumn));
+    // } else if (word == "CLOSEFILE") {
+    //     tokens.emplace_back(new Token(TokenType::CLOSEFILE, line, startColumn));
+    // }
 
-    else if (word == "READ") {
-        tokens.emplace_back(new Token(TokenType::READ, line, startColumn));
-    } else if (word == "WRITE") {
-        tokens.emplace_back(new Token(TokenType::WRITE, line, startColumn));
-    } else if (word == "APPEND") {
-        tokens.emplace_back(new Token(TokenType::APPEND, line, startColumn));
-    } else if (word == "RANDOM") {
-        tokens.emplace_back(new Token(TokenType::RANDOM, line, startColumn));
-    }
+    // else if (word == "READ") {
+    //     tokens.emplace_back(new Token(TokenType::READ, line, startColumn));
+    // } else if (word == "WRITE") {
+    //     tokens.emplace_back(new Token(TokenType::WRITE, line, startColumn));
+    // } else if (word == "APPEND") {
+    //     tokens.emplace_back(new Token(TokenType::APPEND, line, startColumn));
+    // }
+
+    // else if (word == "RANDOM") {
+    //     tokens.emplace_back(new Token(TokenType::RANDOM, line, startColumn));
+    // }
 
     else if (word == "SEEK") {
         tokens.emplace_back(new Token(TokenType::SEEK, line, startColumn));
