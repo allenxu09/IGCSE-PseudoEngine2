@@ -1,0 +1,47 @@
+// Test file demonstrating SQRT function with INTEGER and REAL inputs
+// SQRT calculates the square root and returns a REAL type
+
+// Test with INTEGER inputs
+PRINT "Testing SQRT with INTEGER inputs:"
+PRINT "SQRT(4) = " & SQRT(4)
+PRINT "SQRT(16) = " & SQRT(16)
+PRINT "SQRT(25) = " & SQRT(25)
+PRINT "SQRT(100) = " & SQRT(100)
+
+// Test with REAL inputs
+PRINT ""
+PRINT "Testing SQRT with REAL inputs:"
+PRINT "SQRT(4.0) = " & SQRT(4.0)
+PRINT "SQRT(2.0) = " & SQRT(2.0)
+PRINT "SQRT(9.0) = " & SQRT(9.0)
+
+// Test with INTEGER variable
+PRINT ""
+PRINT "Testing SQRT with INTEGER variable:"
+DECLARE intVar : INTEGER
+intVar <- 49
+PRINT "intVar = 49"
+PRINT "SQRT(intVar) = " & SQRT(intVar)
+
+// Test with REAL variable
+PRINT ""
+PRINT "Testing SQRT with REAL variable:"
+DECLARE realVar : REAL
+realVar <- 144.0
+PRINT "realVar = 144.0"
+PRINT "SQRT(realVar) = " & SQRT(realVar)
+
+// Test with expressions
+PRINT ""
+PRINT "Testing SQRT with expressions:"
+PRINT "SQRT(5 * 5) = " & SQRT(5 * 5)
+PRINT "SQRT(3.0 * 3.0) = " & SQRT(3.0 * 3.0)
+
+// Test nested SQRT
+PRINT ""
+PRINT "Testing nested SQRT:"
+PRINT "SQRT(SQRT(256)) = " & SQRT(SQRT(256))
+PRINT "SQRT(SQRT(81.0)) = " & SQRT(SQRT(81.0))
+
+PRINT ""
+PRINT "All SQRT tests passed!"
